@@ -7,3 +7,5 @@ screen -d -m -RR django -t django bash -c 'cd /usr/local/lib/xvoice && source xv
 #screen -d -m -RR worker -t worker bash -c 'cd /usr/local/lib && source xvoicevenv/bin/activate && cd /usr/local/lib/xvoice && python manage.py shell'
 
 
+
+
