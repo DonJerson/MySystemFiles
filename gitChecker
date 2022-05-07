@@ -1,20 +1,7 @@
 #!/bin/sh
 
 cd ..
-
-VAR1="\"${PWD}\""
-VAR2="/Users/jersonmendez"
-# Check if var2 is substring of var1
-# if [[ "$VAR1" == *"$VAR2"* ]]; then
-
-if [[ "$VAR1" == *"$VAR2"* ]]; then
-    echo "String contained."
-    echo "Current directory: $VAR1"
-else
-    echo "String not contained."
-fi
-
-cd ~/smartrater
+cd "${PWD}/smartrater"
 
 UPSTREAM=${1:-'@{u}'}
 LOCAL=$(git rev-parse @)
@@ -22,7 +9,7 @@ REMOTE=$(git rev-parse "$UPSTREAM")
 BASE=$(git merge-base @ "$UPSTREAM")
 
 if [ $LOCAL = $REMOTE ]; then
-    echo "Up-to-date"
+    echo "Up-to-date smartrater"
 elif [ $LOCAL = $BASE ]; then
     echo "Need to pull"
 elif [ $REMOTE = $BASE ]; then
@@ -31,7 +18,8 @@ else
     echo "Diverged"
 fi
 
-cd /root/systemfiles
+cd ..
+cd "${PWD}/systemfiles"
 
 UPSTREAM=${1:-'@{u}'}
 LOCAL=$(git rev-parse @)
@@ -39,7 +27,7 @@ REMOTE=$(git rev-parse "$UPSTREAM")
 BASE=$(git merge-base @ "$UPSTREAM")
 
 if [ $LOCAL = $REMOTE ]; then
-    echo "Up-to-date"
+    echo "Up-to-date files"
 elif [ $LOCAL = $BASE ]; then
     echo "Need to pull"
 elif [ $REMOTE = $BASE ]; then
