@@ -1,6 +1,20 @@
 #!/bin/sh
 
-cd /root/smartrater
+cd ..
+
+VAR1="\"${PWD}\""
+VAR2="/Users/jersonmendez"
+# Check if var2 is substring of var1
+# if [[ "$VAR1" == *"$VAR2"* ]]; then
+
+if [[ "$VAR1" == *"$VAR2"* ]]; then
+    echo "String contained."
+    echo "Current directory: $VAR1"
+else
+    echo "String not contained."
+fi
+
+cd ~/smartrater
 
 UPSTREAM=${1:-'@{u}'}
 LOCAL=$(git rev-parse @)
