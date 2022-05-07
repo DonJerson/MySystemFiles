@@ -1,0 +1,19 @@
+#!/bin/sh
+
+#export STATUS= "git status -uno | grep Changes"
+export STATUS="\"$(cd /root/systemfiles && git remote show origin)\""  
+SUB='not staged'
+
+case $STATUS in
+  *"$SUB"*)
+    echo "$STATUS"
+    ;;
+esac
+
+
+# if [ "$STATUS" = *"$SUB"* ]; then
+#     echo "Up-to-Date SmartRater"
+# else 
+#     
+#     # /root/smartrater/.git pull origin master
+# fi

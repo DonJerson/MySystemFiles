@@ -1,4 +1,0 @@
-#!/bin/bash -e
-
-bash -c 'git status -uno
-
