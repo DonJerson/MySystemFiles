@@ -7,7 +7,7 @@ if [[ "$VAR1" == *"$VAR2"* ]]; then
     cd ..
     cd "${PWD}/smartrater"
 else
-    cd "${PWD}/smartrater"
+    cd "/root/smartrater"
 fi
 
 UPSTREAM=${1:-'@{u}'}
@@ -29,7 +29,7 @@ if [[ "$VAR1" == *"$VAR2"* ]]; then
     cd ..
     cd "${PWD}/systemfiles"
 else
-    cd "${PWD}/systemfiles"
+    cd "/root/systemfiles"
 fi
 
 UPSTREAM=${1:-'@{u}'}
