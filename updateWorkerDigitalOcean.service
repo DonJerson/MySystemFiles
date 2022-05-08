@@ -1,5 +1,3 @@
-# Minerd Paths
-
 [Unit]
 Description=Git Refresher
 After=network.target
