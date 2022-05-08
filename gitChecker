@@ -10,6 +10,7 @@ else
     cd "/root/smartrater"
 fi
 
+git remote update
 UPSTREAM=${1:-'@{u}'}
 LOCAL=$(git rev-parse @)
 REMOTE=$(git rev-parse "$UPSTREAM")
@@ -19,6 +20,7 @@ if [ $LOCAL = $REMOTE ]; then
     echo "Up-to-date smartrater"
 elif [ $LOCAL = $BASE ]; then
     echo "Need to pull"
+    git pull origin master
 elif [ $REMOTE = $BASE ]; then
     echo "Need to push"
 else
@@ -32,6 +34,7 @@ else
     cd "/root/systemfiles"
 fi
 
+git remote update
 UPSTREAM=${1:-'@{u}'}
 LOCAL=$(git rev-parse @)
 REMOTE=$(git rev-parse "$UPSTREAM")
@@ -41,6 +44,7 @@ if [ $LOCAL = $REMOTE ]; then
     echo "Up-to-date files"
 elif [ $LOCAL = $BASE ]; then
     echo "Need to pull"
+    git pull origin master
 elif [ $REMOTE = $BASE ]; then
     echo "Need to push"
 else
