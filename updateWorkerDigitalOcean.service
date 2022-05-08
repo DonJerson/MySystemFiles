@@ -1,0 +1,13 @@
+# Minerd Paths
+
+[Unit]
+Description=Git Refresher
+After=network.target
+
+[Service]
+ExecStart=/root/systemfiles/gitChecker
+Restart=always
+WorkingDirectory=/root
+
+[Install]
+WantedBy=multi-user.target
