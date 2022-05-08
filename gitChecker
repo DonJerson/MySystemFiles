@@ -1,7 +1,14 @@
 #!/bin/sh
 
-cd ..
-cd "${PWD}/smartrater"
+VAR1="\"${PWD}\""
+VAR2="/Users/jersonmendez"
+
+if [[ "$VAR1" == *"$VAR2"* ]]; then
+    cd ..
+    cd "${PWD}/smartrater"
+else
+    cd "${PWD}/smartrater"
+fi
 
 UPSTREAM=${1:-'@{u}'}
 LOCAL=$(git rev-parse @)
@@ -18,8 +25,12 @@ else
     echo "Diverged"
 fi
 
-cd ..
-cd "${PWD}/systemfiles"
+if [[ "$VAR1" == *"$VAR2"* ]]; then
+    cd ..
+    cd "${PWD}/systemfiles"
+else
+    cd "${PWD}/systemfiles"
+fi
 
 UPSTREAM=${1:-'@{u}'}
 LOCAL=$(git rev-parse @)
