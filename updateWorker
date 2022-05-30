@@ -1,7 +1,13 @@
 #!/bin/sh
 
 #export STATUS= "git status -uno | grep Changes"
-export STATUS="\"$(cd /root/systemfiles && git remote show origin)\""  
+
+while [ true ]; do
+ 
+ # do what you need to here
+
+
+export STATUS="\"$(cd /home/ubuntu/smartrater/backsrc && git remote show origin)\""  
 SUB='not staged'
 
 case $STATUS in
@@ -11,9 +17,13 @@ case $STATUS in
 esac
 
 
-# if [ "$STATUS" = *"$SUB"* ]; then
-#     echo "Up-to-Date SmartRater"
-# else 
-#     
-#     # /root/smartrater/.git pull origin master
-# fi
+if [ "$STATUS" = *"$SUB"* ]; then
+    echo "Up-to-Date SmartRater"
+else 
+    echo "q vaina er diablo e"
+    cd /home/ubuntu/smartrater/backsrc
+    git pull origin master
+fi
+
+    sleep 2
+done
