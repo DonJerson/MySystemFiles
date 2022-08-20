@@ -6,23 +6,19 @@ while [ true ]; do
  
  # do what you need to here
 
+UPSTREAM=${1:-'@{u}'}
+LOCAL=$(git rev-parse @{0})
+REMOTE=$(git rev-parse "$UPSTREAM")
+BASE=$(git merge-base @{0} "$UPSTREAM")
 
-export STATUS="\"$(cd /home/ubuntu/smartrater/backsrc && git remote show origin)\""  
-SUB='not staged'
-
-case $STATUS in
-  *"$SUB"*)
-    echo "$STATUS"
-    ;;
-esac
-
-
-if [ "$STATUS" = *"$SUB"* ]; then
-    echo "Up-to-Date SmartRater"
-else 
-    echo "q vaina er diablo e"
-    cd /home/ubuntu/smartrater/backsrc
-    git pull origin master
+if [ $LOCAL = $REMOTE ]; then
+    echo "Up-to-date"
+elif [ $LOCAL = $BASE ]; then
+    echo "Need to pull"
+elif [ $REMOTE = $BASE ]; then
+    echo "Need to push"
+else
+    echo "Diverged"
 fi
 
     sleep 2
